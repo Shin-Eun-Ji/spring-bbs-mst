@@ -1,0 +1,39 @@
+server:
+  port: 8899
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+
+spring:
+  profiles:
+    active: dev
+
+# spring boot 2.2 부터 put, delete 사용을 위해 hiddenMethodFilter 설정이 별도 필요함.
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/views/
+#      suffix: .jsp
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      format: true
+
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
